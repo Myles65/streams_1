@@ -14,24 +14,24 @@ class _StreamsState extends State<Streams> {
           ListTile(
             leading: Icon(Icons.check),
             title: Text('Cutting Hair'),
-            subtitle:Text('Developed'),
+            subtitle: Text('Developed'),
             trailing: Icon(Icons.menu),
-            onTap: (){},
+            onTap: () {},
           ),
           ListTile(
             leading: Icon(Icons.access_time),
             title: Text('Lawn Company'),
-            subtitle:Text('In Development'),
+            subtitle: Text('In Development'),
             trailing: Icon(Icons.menu),
-            onTap: (){},
-          ),
-          FloatingActionButton(
-            onPressed: () {},
-            child: Icon(Icons.add),
-            backgroundColor: Color(0xFF006994),
+            onTap: () {},
           ),
         ],
-      )
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Color(0xFF006994),
+      ),
     );
   }
 }
