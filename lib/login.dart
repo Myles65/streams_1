@@ -1,55 +1,51 @@
 import 'package:flutter/material.dart';
+import 'create_profile.dart';
 import 'streams.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-class AddStreams extends StatefulWidget {
-  @override
-  _AddStreamsState createState() => _AddStreamsState();
-}
-
-class _AddStreamsState extends State<AddStreams> {
+class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
+      body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-           Text('Stream Name'),
-            TextField(
-              keyboardType: TextInputType.text,
-              textAlign: TextAlign.center,
-              decoration: InputDecoration.collapsed(
-                hintText: 'Investment',
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF006994))),
-              ),
+            Text(
+              'Streams',
+              style: TextStyle(fontSize: 60, color: Color(0xFF006994)),
             ),
-            SizedBox(
-              height: 10,
-            ),
-            Text("Date Started"),
-            TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration.collapsed(
-                hintText: 'mm/dd/yyyy',
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF006994))),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            Text("Description"),
-            TextField(
-              textAlign: TextAlign.center,
-              decoration: InputDecoration(
-                border: OutlineInputBorder(
-                    borderSide: BorderSide(color: Color(0xFF006994))),
+            SizedBox(height: 35),
+            Text(
+              'Login',
+              style: TextStyle(
+                fontSize: 20,
               ),
             ),
             SizedBox(
               height: 25,
+            ),
+            TextField(
+              keyboardType: TextInputType.emailAddress,
+              textAlign: TextAlign.center,
+              decoration: InputDecoration.collapsed(
+                hintText: 'Email',
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF006994))),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            TextField(
+              textAlign: TextAlign.center,
+              decoration: InputDecoration.collapsed(
+                hintText: 'Password',
+                border: OutlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF006994))),
+              ),
+            ),
+            SizedBox(
+              height: 10,
             ),
             RaisedButton(
               onPressed: () {
@@ -61,7 +57,7 @@ class _AddStreamsState extends State<AddStreams> {
               elevation: 0,
               color: Color(0xFF006994),
               child: Text(
-                'Add Stream',
+                'Login',
                 style: TextStyle(color: Colors.white),
               ),
             ),
@@ -72,10 +68,11 @@ class _AddStreamsState extends State<AddStreams> {
               onTap: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Streams()),
+                  MaterialPageRoute(builder: (context) => Create()),
                 );
               },
-              child: Text('Cancel',
+              child: Text(
+                "Don't have an account, Sign up",
                 style: TextStyle(
                   decoration: TextDecoration.underline,
                 ),
@@ -83,16 +80,6 @@ class _AddStreamsState extends State<AddStreams> {
             ),
           ],
         ),
-      ),
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0.0,
-        title: Text('Add Streams',
-            style: GoogleFonts.bebasNeue(
-              //fontSize: SizeConfig.safeBlockHorizontal* 8,
-                textStyle: TextStyle(color: Color(0xFF006994)))),
-        iconTheme: IconThemeData(color: Color(0xFF006994)),
-        backgroundColor: Colors.white,
       ),
     );
   }

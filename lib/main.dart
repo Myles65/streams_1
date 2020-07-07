@@ -4,6 +4,7 @@ import 'streams.dart';
 import 'activity.dart';
 import 'profile.dart';
 //import 'info.dart';
+import 'login.dart';
 
 import 'size_config.dart';
 
@@ -19,11 +20,52 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.bebasNeueTextTheme()
               .apply(bodyColor: Colors.black, displayColor: Colors.black),
         ),
-        home: MyNavigationBar(),
+        home: Login(),
         debugShowCheckedModeBanner: false);
   }
 }
 
+class MyDrawer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Drawer(
+      child: ListView(
+        children: <Widget>[
+          Center(
+            child: DrawerHeader(
+              child: Text('Myles65@gmail.com'),
+            ),
+          ),
+          ListTile(
+            title: Text('About'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Privacy Policy'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Terms & Conditions'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Help'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Reset Password'),
+            onTap: () {},
+          ),
+          ListTile(
+            title: Text('Sign Out'),
+            onTap: () {},
+          ),
+        ],
+
+      ),
+    );
+  }
+}
 class MyNavigationBar extends StatefulWidget {
   @override
   _MyNavigationBarState createState() => _MyNavigationBarState();
