@@ -5,7 +5,7 @@ import 'activity.dart';
 import 'profile.dart';
 //import 'info.dart';
 import 'login.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'size_config.dart';
 
 void main() {
@@ -15,6 +15,7 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
         theme: ThemeData(
           textTheme: GoogleFonts.bebasNeueTextTheme()
@@ -26,15 +27,20 @@ class MyApp extends StatelessWidget {
 }
 
 class MyDrawer extends StatelessWidget {
+  String _userE;
   @override
   Widget build(BuildContext context) {
+    FirebaseAuth.instance.currentUser().then((user) {
+      _userE = user.email;
+    });
     return Drawer(
       child: ListView(
         children: <Widget>[
           Center(
             child: DrawerHeader(
-              child: Text('Myles65@gmail.com'),
+              child: Text(_userE!=null? _userE: 'Email'),
             ),
+            //go back and look over
           ),
           ListTile(
             title: Text('About'),
@@ -58,12 +64,27 @@ class MyDrawer extends StatelessWidget {
           ),
           ListTile(
             title: Text('Sign Out'),
-            onTap: () {},
+            onTap: () {
+              _signOut();
+              Navigator.pop(context);
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => Streams()),
+              );
+            },
           ),
         ],
 
       ),
     );
+  }
+}
+
+Future<void> _signOut() async {
+  try {
+    await FirebaseAuth.instance.signOut();
+  } catch (e) {
+    print(e);
   }
 }
 class MyNavigationBar extends StatefulWidget {
