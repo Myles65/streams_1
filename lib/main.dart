@@ -8,6 +8,7 @@ import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'size_config.dart';
 
+
 void main() {
   runApp(MyApp());
 }
@@ -26,8 +27,15 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyDrawer extends StatelessWidget {
+class MyDrawer extends StatefulWidget {
+  @override
+  _MyDrawerState createState() => _MyDrawerState();
+}
+
+class _MyDrawerState extends State<MyDrawer> {
   String _userE;
+
+
   @override
   Widget build(BuildContext context) {
     FirebaseAuth.instance.currentUser().then((user) {
