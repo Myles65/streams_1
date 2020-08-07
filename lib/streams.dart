@@ -26,7 +26,7 @@ class _StreamsState extends State<Streams> {
         elevation: 0.0,
         title: Text('Streams',
             style: GoogleFonts.bebasNeue(
-                //fontSize: SizeConfig.safeBlockHorizontal* 8,
+              //fontSize: SizeConfig.safeBlockHorizontal* 8,
                 textStyle: TextStyle(color: Color(0xFF006994)))),
         iconTheme: IconThemeData(color: Color(0xFF006994)),
         backgroundColor: Colors.white,
@@ -51,21 +51,23 @@ class _StreamsState extends State<Streams> {
             );
           } else {
             return ListView.builder(
-                itemCount: snapshot.data.legth,
-                itemBuilder: (_, index) {
+                itemCount: snapshot.data.length,
+                itemBuilder: (_,index) {
                   return
-//                    ListTile(
-//                    title: Text(snapshot.data.[index].data['name']),
-//                    subtitle: Text(snapshot.data.documents[0]['formi']),
-//                  );
-                      Card(
-                          child: Column(
-                    children: <Widget>[
-                      Text(snapshot.data[index].data['name']),
-                      Text(snapshot.data[index].data['formi']),
-                      Text(snapshot.data[index].data['description']),
-                    ],
-                  ));
+
+                    ListTile(
+                    title: Text(snapshot.data[index].data['name']),
+                    subtitle: Text(snapshot.data[index].data['formi']),
+                  );
+//                    Card(
+//                        child:Column(
+//                          children: <Widget>[
+//                            Text(snapshot.data[index].data['name']),
+//                            Text(snapshot.data[index].data['formi']),
+//                            Text(snapshot.data[index].data['description']),
+//                          ],
+//                        )
+//                    );
                 });
           }
         },
