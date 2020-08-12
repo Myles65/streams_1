@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'add_streams.dart';
 import 'package:google_fonts/google_fonts.dart';
-
+//import 'package:streams_1/models/data.dart';
 //import 'size_config.dart';
 import 'main.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -12,11 +12,7 @@ class Streams extends StatefulWidget {
 }
 
 class _StreamsState extends State<Streams> {
-  Future getPost() async {
-    var firestore = Firestore.instance;
-    QuerySnapshot qn = await firestore.collection('Post').getDocuments();
-    return qn.documents;
-  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -42,36 +38,51 @@ class _StreamsState extends State<Streams> {
         child: Icon(Icons.add),
         backgroundColor: Color(0xFF006994),
       ),
-      body: FutureBuilder(
-        future: getPost(),
-        builder: (_, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(
-              child: Text('Loading'),
-            );
-          } else {
-            return ListView.builder(
-                itemCount: snapshot.data.length,
-                itemBuilder: (_,index) {
-                  return
-
-                    ListTile(
-                    title: Text(snapshot.data[index].data['name']),
-                    subtitle: Text(snapshot.data[index].data['formi']),
-                  );
-//                    Card(
-//                        child:Column(
-//                          children: <Widget>[
-//                            Text(snapshot.data[index].data['name']),
-//                            Text(snapshot.data[index].data['formi']),
-//                            Text(snapshot.data[index].data['description']),
-//                          ],
-//                        )
-//                    );
-                });
-          }
-        },
+      body: StreamBuilder(
+        stream: Firestore.instance.collection('Post').snapshots(),
+        builder:(BuildContext context, AsyncSnapshot <QuerySnapshot> snapshot){
+          if(!snapshot.hasData) return Text('Loading..');
+          return ListView(
+            children: snapshot.data.documents.map((document){
+              return ListTile(
+                title: Text(document['name']),
+                subtitle: Text(document['formi'])
+              );
+            }).toList()
+                //***Split this code
+          );
+        }
       ),
+//      FutureBuilder(
+//        future: getPost(),
+//        builder: (_, snapshot) {
+//          if (snapshot.connectionState == ConnectionState.waiting) {
+//            return Center(
+//              child: Text('Loading'),
+//            );
+//          } else {
+//            return ListView.builder(
+//                itemCount: snapshot.data.length,
+//                itemBuilder: (_,index) {
+//                  return
+//
+//                    ListTile(
+//                    title: Text(snapshot.data[index].data['name']),
+//                    subtitle: Text(snapshot.data[index].data['formi'?? 'Loading']),
+//                  );
+////                    Card(
+////                        child:Column(
+////                          children: <Widget>[
+////                            Text(snapshot.data[index].data['name']),
+////                            Text(snapshot.data[index].data['formi']),
+////                            Text(snapshot.data[index].data['description']),
+////                          ],
+////                        )
+////                    );
+//                });
+//          }
+//        },
+//      ),
 
 //      StreamBuilder(
 //        stream: Firestore.instance.collection('Post').snapshots(),
