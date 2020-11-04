@@ -23,6 +23,9 @@ class _StreamsState extends State<Streams> {
   String streams;
   String description;
 
+
+
+
   @override
   Widget build(BuildContext context) {
     status = dropdownStr;
@@ -110,7 +113,10 @@ class _StreamsState extends State<Streams> {
                                             ),
                                             Text('Form of income'),
                                             DropdownButton<String>(
-                                                value: dropdownStr,
+                                                value: document['formi'],
+                                                //value:dropdownStr,
+                                                //It doesn't update the dropdown data to new selection we ran again
+                                                //First iteration keeping for protection
                                                 onChanged: (String newValue) {
                                                   setState(() {
                                                     dropdownStr = newValue;
