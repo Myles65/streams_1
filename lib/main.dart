@@ -4,9 +4,10 @@ import 'streams.dart';
 import 'activity.dart';
 import 'profile.dart';
 //import 'info.dart';
-import 'login.dart';
+//import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'size_config.dart';
+import 'about.dart';
 
 
 void main() {
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
           textTheme: GoogleFonts.bebasNeueTextTheme()
               .apply(bodyColor: Colors.black, displayColor: Colors.black),
         ),
-        home: Login(),
+        home: Streams(),
+        //Login(),
         debugShowCheckedModeBanner: false);
   }
 }
@@ -33,26 +35,34 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
-  String _userE;
+ // String _userE;
 
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth.instance.currentUser().then((user) {
-      _userE = user.email;
-    });
+    // FirebaseAuth.instance.currentUser().then((user) {
+    //   _userE = user.email;
+    // });
+    // Will utilize to show email in drawer soon
     return Drawer(
       child: ListView(
         children: <Widget>[
-          Center(
-            child: DrawerHeader(
-              child: Text(_userE!=null? _userE: 'Email'),
-            ),
-            //go back and look over
-          ),
+//          Center(
+//            child:
+//
+//            DrawerHeader(
+//              child: Text(_userE!=null? _userE: 'Email'),
+//            ),
+//            //go back and look over
+//          ),
           ListTile(
             title: Text('About'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => About()),
+              );
+            },
           ),
           ListTile(
             title: Text('Privacy Policy'),
@@ -137,14 +147,17 @@ class _MyNavigationBarState extends State<MyNavigationBar>
       body: _children[_currentIndex],
       appBar: AppBar(
         elevation: 0.0,
-        title: Center(
-          child: Text(
-            'Streams',
-            style: GoogleFonts.bebasNeue(
-                fontSize: SizeConfig.safeBlockHorizontal * 8,
-                textStyle: TextStyle(color: Color(0xFF006994))),
-          ),
-        ),
+        title: Image.asset('assets/IncomeFlood Logo.png', fit: BoxFit.cover),
+        // Center(
+        //   child:
+        //
+        //   Text(
+        //     'Income Flood',
+        //     style: GoogleFonts.bebasNeue(
+        //         fontSize: SizeConfig.safeBlockHorizontal * 8,
+        //         textStyle: TextStyle(color: Color(0xFF006994))),
+        //   ),
+        // ),
         backgroundColor: Colors.white,
       ),
       bottomNavigationBar: BottomNavigationBar(

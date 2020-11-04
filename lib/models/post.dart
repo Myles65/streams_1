@@ -6,5 +6,5 @@ class Post {
     this.name,
     this.status,
     this.description,
-})
+});
 }

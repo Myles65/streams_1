@@ -4,7 +4,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'models/data.dart';
 
-
 class AddStreams extends StatefulWidget {
   @override
   _AddStreamsState createState() => _AddStreamsState();
@@ -19,49 +18,15 @@ class _AddStreamsState extends State<AddStreams> {
   String description;
   String status;
   final db = Firestore.instance;
-final _formKey = GlobalKey<FormState>();
+  final _formKey = GlobalKey<FormState>();
 
-//    try {
-//      await db.collection('Post').add({
-//        'name': _streamcontroller.text,
-//        'formi': dropdownStr,
-//        'description': _descriptioncontroller.text,
-//      });
-//    } catch (e) {
-//      print(e);
-//    }
-//    if (db != null) {
-//      Navigator.push(
-//        context,
-//        MaterialPageRoute(builder: (context) => Streams()),
-//      );
-//      print(
-//        '$_streamcontroller',
-//      );
-//    }
-//  }
+  @override
+  void initState() {
+    _streamController.text = streams;
+    _descriptionController.text = description;
 
-  // _sendStreams() async {
-//    await db.collection('Post').add({
-//      'name': _streamcontroller.text,
-//      'formi': dropdownStr,
-//      'description': _descriptioncontroller.text,
-//    });
-//    if (db != null) {
-//      Navigator.push(
-//        context,
-//        MaterialPageRoute(builder: (context) => Streams()),
-//      );
-//      print(
-//        '$_streamcontroller',
-//      );
-//    }
-//  }
-
-//  void initState() {
-//    _sendStreams();
-//    super.initState();
-//  }
+    return super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -80,7 +45,7 @@ final _formKey = GlobalKey<FormState>();
                   child: TextField(
                     keyboardType: TextInputType.text,
                     textAlign: TextAlign.center,
-                    onChanged: (value){
+                    onChanged: (value) {
                       streams = value;
                     },
                     controller: _streamController,
@@ -138,10 +103,9 @@ final _formKey = GlobalKey<FormState>();
                   child: TextField(
                     textAlign: TextAlign.center,
                     controller: _descriptionController,
-                    onChanged:(value){
+                    onChanged: (value) {
                       description = value;
                     },
-
                     decoration: InputDecoration(
 //                border: OutlineInputBorder(
 //                    borderSide: BorderSide(color: Color(0xFF006994))),
@@ -163,7 +127,7 @@ final _formKey = GlobalKey<FormState>();
 //                    }
                   },
                   elevation: 0,
-                  color: Color(0xFF006994),
+                  color: Color(0xFF85bb65),
                   child: Text(
                     'Add Stream',
                     style: TextStyle(color: Colors.white),
@@ -197,8 +161,8 @@ final _formKey = GlobalKey<FormState>();
         title: Text('Add Streams',
             style: GoogleFonts.bebasNeue(
                 //fontSize: SizeConfig.safeBlockHorizontal* 8,
-                textStyle: TextStyle(color: Color(0xFF006994)))),
-        iconTheme: IconThemeData(color: Color(0xFF006994)),
+                textStyle: TextStyle(color: Color(0xFF85bb65)))),
+        iconTheme: IconThemeData(color: Color(0xFF85bb65)),
         backgroundColor: Colors.white,
       ),
     );
