@@ -17,7 +17,7 @@ class _EditState extends State<Edit> {
   String streams;
   String description;
   String status;
-  String dropdownStr = 'Active';
+  //String dropdownStr = 'Active';
 
 
   Future<void> udpateStreams(String streams , String description,
@@ -64,6 +64,7 @@ class _EditState extends State<Edit> {
               ),
               Text('Form of income'),
               DropdownButton<String>(
+                  elevation: 30,
                   value: dropdownStr,
                   onChanged: (String newValue) {
                     setState(() {
@@ -77,6 +78,7 @@ class _EditState extends State<Edit> {
                       child: Text(value),
                     );
                   }).toList()),
+
               SizedBox(
                 height: 10,
               ),

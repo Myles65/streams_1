@@ -17,12 +17,17 @@ void main() {
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-
     return MaterialApp(
-        theme: ThemeData(
-          textTheme: GoogleFonts.bebasNeueTextTheme()
-              .apply(bodyColor: Colors.black, displayColor: Colors.black),
-        ),
+          theme: ThemeData(
+            textTheme: GoogleFonts.oswaldTextTheme()
+                .apply(bodyColor: Colors.black, displayColor: Colors.black),
+          ),
+
+    // return MaterialApp(
+    //     theme: ThemeData(
+    //       textTheme: GoogleFonts.bebasNeueTextTheme()
+    //           .apply(bodyColor: Colors.black, displayColor: Colors.black),
+    //     ),
         home: Streams(),
         //Login(),
         debugShowCheckedModeBanner: false);
