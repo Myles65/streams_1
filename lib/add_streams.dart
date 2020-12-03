@@ -117,14 +117,14 @@ class _AddStreamsState extends State<AddStreams> {
                 ),
                 RaisedButton(
                   onPressed: () {
-                    sendStreams(streams, description, status);
-//                    if (sendStreams(streams, description, status) != null){
-//                      Navigator.pop(context);
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(builder: (context) => Streams()),
-//                      );
-//                    }
+                    //sendStreams(streams, description, status);
+                   if (sendStreams(streams, description, status) != null){
+                     Navigator.pop(context);
+                     Navigator.push(
+                       context,
+                       MaterialPageRoute(builder: (context) => Streams()),
+                     );
+                   }
                   },
                   elevation: 0,
                   color: Color(0xFF85bb65),

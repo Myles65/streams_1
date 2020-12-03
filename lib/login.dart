@@ -20,10 +20,10 @@ class Login extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(
-                    'Streams',
-                    style: TextStyle(fontSize: 60, color: Color(0xFF006994)),
-                  ),
+                  Container(
+                      width: 200,
+                      height: 200,
+                      child: Image.asset('assets/IncomeFlood Logo.png')),
                   SizedBox(height: 35),
                   Text(
                     'Login',
@@ -76,7 +76,6 @@ class Login extends StatelessWidget {
                   ),
                   RaisedButton(
                     onPressed: () {
-
                       if (_formKey.currentState.validate()) {
                         AuthServices.signInUser(
                                 emailController.text, passwordController.text)
@@ -98,7 +97,7 @@ class Login extends StatelessWidget {
 //                      );
                     },
                     elevation: 0,
-                    color: Color(0xFF006994),
+                    color: Color(0xFF85bb65),
                     child: Text(
                       'Login',
                       style: TextStyle(color: Colors.white),

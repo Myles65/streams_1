@@ -24,13 +24,13 @@ class _CreateState extends State<Create> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-
-                  Text('Streams',style: TextStyle(
-                      fontSize: 60,
-                      color:Color(0xFF006994)
-                  ),),
+                  Container(
+                      width: 200,
+                      height: 200,
+                      child: Image.asset('assets/IncomeFlood Logo.png')),
                   SizedBox(height: 35),
-                  Text('Create Account',
+                  Text(
+                    'Create Account',
                     style: TextStyle(
                       fontSize: 20,
                     ),
@@ -47,12 +47,11 @@ class _CreateState extends State<Create> {
                       decoration: InputDecoration(
                         hintText: 'Email',
                       ),
-                      validator: (value){
-                        if(value.isEmpty){
+                      validator: (value) {
+                        if (value.isEmpty) {
                           return 'Please enter an email';
                         }
                         return null;
-
                       },
                     ),
                   ),
@@ -67,13 +66,13 @@ class _CreateState extends State<Create> {
                       obscureText: true,
                       decoration: InputDecoration(
                         hintText: "Password",
-                      ),validator: (value){
-                      if(value.isEmpty){
-                        return 'Please enter an Password';
-                      }
-                      return null;
-
-                    },
+                      ),
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter an Password';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   SizedBox(
@@ -88,15 +87,15 @@ class _CreateState extends State<Create> {
                       decoration: InputDecoration(
                         hintText: 'Confirm Passoword',
                       ),
-                      validator: (value){
-                      if(value.isEmpty){
-                        return 'Please enter an Password';
-                      }if(value!= passwordController.text){
-                        return 'Please enter mathing passwords';
-                      }
-                      return null;
-
-                    },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'Please enter an Password';
+                        }
+                        if (value != passwordController.text) {
+                          return 'Please enter mathing passwords';
+                        }
+                        return null;
+                      },
                     ),
                   ),
                   SizedBox(
@@ -104,10 +103,10 @@ class _CreateState extends State<Create> {
                   ),
                   RaisedButton(
                     onPressed: () {
-                      if (_formKey.currentState.validate()){
-                        AuthServices.registerUser(emailController.text, passwordController.text);
-                      }
-                      else{
+                      if (_formKey.currentState.validate()) {
+                        AuthServices.registerUser(
+                            emailController.text, passwordController.text);
+                      } else {
                         print('Check errors');
                       }
                       //AuthServices.signInUser(email, password);
@@ -133,7 +132,8 @@ class _CreateState extends State<Create> {
                         MaterialPageRoute(builder: (context) => Login()),
                       );
                     },
-                    child: Text('Already have an account',
+                    child: Text(
+                      'Already have an account',
                       style: TextStyle(
                         decoration: TextDecoration.underline,
                       ),

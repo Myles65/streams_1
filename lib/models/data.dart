@@ -1,8 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-
-
-
+final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+Future<void> resetPassword(String email) async {
+  await _firebaseAuth.sendPasswordResetEmail(email: email);
+}
 Future<void> sendStreams(String streams , String description,
     String status) async {
   await Firestore.instance.collection("Post").add({

@@ -78,7 +78,6 @@ class _EditState extends State<Edit> {
                       child: Text(value),
                     );
                   }).toList()),
-
               SizedBox(
                 height: 10,
               ),

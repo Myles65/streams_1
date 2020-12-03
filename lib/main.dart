@@ -4,10 +4,11 @@ import 'streams.dart';
 import 'activity.dart';
 import 'profile.dart';
 //import 'info.dart';
-//import 'login.dart';
+import 'login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'size_config.dart';
 import 'about.dart';
+import 'models/data.dart';
 
 
 void main() {
@@ -40,15 +41,18 @@ class MyDrawer extends StatefulWidget {
 }
 
 class _MyDrawerState extends State<MyDrawer> {
- // String _userE;
+ String _userE;
+
 
 
   @override
   Widget build(BuildContext context) {
-    // FirebaseAuth.instance.currentUser().then((user) {
-    //   _userE = user.email;
-    // });
-    // Will utilize to show email in drawer soon
+    String email;
+    FirebaseAuth.instance.currentUser().then((user) {
+      _userE = user.email;
+       email = user.email;
+    });
+    //Will utilize to show email in drawer soon
     return Drawer(
       child: ListView(
         children: <Widget>[
@@ -83,16 +87,20 @@ class _MyDrawerState extends State<MyDrawer> {
           ),
           ListTile(
             title: Text('Reset Password'),
-            onTap: () {},
+            onTap: () {
+              print ('Reset email sent to $email. ');
+              resetPassword(email);
+            },
           ),
           ListTile(
             title: Text('Sign Out'),
             onTap: () {
+              print('$_userE signed out');
               _signOut();
               Navigator.pop(context);
               Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => Streams()),
+                MaterialPageRoute(builder: (context) => Login()),
               );
             },
           ),
